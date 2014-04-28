@@ -73,7 +73,8 @@ void DWARFDebugLoc::parse(DataExtractor data, unsigned AddressSize) {
     }
   }
   if (data.isValidOffset(Offset))
-    llvm::errs() << "error: failed to consume entire .debug_loc section\n";
+    llvm::errs() << "error: failed to consume entire .debug_loc section ("
+                 << data.getData().size() - Offset << " bytes remain)\n";
 }
 
 void DWARFDebugLocDWO::parse(DataExtractor data) {
